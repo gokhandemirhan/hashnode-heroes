@@ -46,6 +46,7 @@ function App() {
       setStatus(status || '');
     }
     fetchData();
+    addWalletListener();
   }, []);
 
   const connectWalletPressed = async () => {

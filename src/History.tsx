@@ -72,6 +72,7 @@ const Play = ({ walletAddress }: Play) => {
                           return (
                             <li>
                               <a
+                                data-splitbee-event="See history"
                                 target="_blank"
                                 href={`https://rinkeby.etherscan.io/tx/${history.hash}`}
                               >

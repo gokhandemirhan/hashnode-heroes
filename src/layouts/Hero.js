@@ -3,6 +3,7 @@ import slug from '../images/slug.png';
 import Card from './Card';
 import CardHorizontal from './CardHorizontal';
 import Loader from './Loader';
+import placeholder from '../images/placeholder.png';
 
 const Hero = ({
   walletAddress,
@@ -157,6 +158,7 @@ const Hero = ({
                   <button
                     className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                     onClick={connectWalletPressed}
+                    data-splitbee-event="Connect wallet"
                   >
                     {walletAddress.length > 0 ? (
                       'Connected: ' +
@@ -170,6 +172,7 @@ const Hero = ({
                 )}
                 {!isMinting && walletAddress && (
                   <button
+                    data-splitbee-event="Mint NFT"
                     className="ml-4 inline-flex text-white bg-green-400 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
                     onClick={() => onMintPressed(data)}
                   >
@@ -211,6 +214,7 @@ const Hero = ({
                   <button
                     type="submit"
                     className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                    data-splitbee-event="Fetch post"
                   >
                     Fetch
                   </button>
@@ -235,7 +239,9 @@ const Hero = ({
               <img
                 className="object-cover object-center rounded p-2 nft-card-pass"
                 alt="hero"
-                src={data?.post?.coverImage}
+                src={
+                  data?.post?.coverImage ? data?.post?.coverImage : placeholder
+                }
               />
             </div>
           ) : (

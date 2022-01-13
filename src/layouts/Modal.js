@@ -4,7 +4,7 @@ const Modal = ({ message, token, startClicked }) => {
   const navigate = useNavigate();
 
   const start = () => {
-    // startClicked();
+    startClicked();
     navigate('/play');
   };
 

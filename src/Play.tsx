@@ -115,6 +115,7 @@ const Play = ({ walletAddress }: Play) => {
           )}
           <button
             className="rounded text-white bg-blue-400 border-0 py-2 px-6 hover:bg-blue-600"
+            data-splitbee-event="Toggle music"
             onClick={() => {
               if (audio.paused) {
                 audio.play();
@@ -178,6 +179,7 @@ const Play = ({ walletAddress }: Play) => {
                                 </div>
                                 <button
                                   className="text-white bg-red-500 border-0 py-2 px-6 rounded"
+                                  data-splitbee-event="Select hero"
                                   onClick={() => {
                                     setChosen(nft);
                                     setEnemy(
@@ -209,6 +211,7 @@ const Play = ({ walletAddress }: Play) => {
                   <div className="battle">
                     <div className="text-center">
                       <button
+                        data-splitbee-event="Start/Stop battle"
                         className={`text-white border-0 py-2 px-6 rounded ${
                           isStarted ? 'bg-blue-500' : 'bg-red-500'
                         } `}
