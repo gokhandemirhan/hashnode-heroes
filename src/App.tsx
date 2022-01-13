@@ -15,6 +15,7 @@ import {
   getCurrentWalletConnected,
   mintNFT,
   random,
+  transferNFT,
 } from './utils/interactions';
 
 interface Reaction {
@@ -65,10 +66,11 @@ function App() {
       },
     };
     console.log('On mint pressed', metadata);
-    // const { name } = await mintNFT(metadata);
+    const token = await mintNFT(metadata);
     console.log('Minted', name);
+    const { transactionHash } = await transferNFT(walletAddress, token);
     setIsMinting(false);
-    setStatus(name || '');
+    setStatus(`Minted ${token.name}`);
   };
 
   const generateStats = (data: any) => {

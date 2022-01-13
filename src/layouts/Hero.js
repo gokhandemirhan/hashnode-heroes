@@ -65,9 +65,9 @@ const Hero = ({
   const generateReactions = (data) => {
     return (
       <div className="flex flex-wrap">
-        {data.map((r) => {
+        {data.map((r, i) => {
           return (
-            <div className="p-2 w-1/6">
+            <div className="p-2 w-1/6" key={`r_${i}`}>
               <a className="inline-flex items-center">
                 <img
                   alt="blog"

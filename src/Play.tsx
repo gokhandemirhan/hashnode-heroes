@@ -46,9 +46,8 @@ const Play = ({ walletAddress }: Play) => {
       setLoading(false);
     }
     fetchData();
-    if (audio.currentTime === 0) {
-      audio.play();
-    }
+    audio.play();
+
     return () => {
       audio.pause();
     };
@@ -144,9 +143,11 @@ const Play = ({ walletAddress }: Play) => {
               <div className="flex flex-row">
                 {!chosen && (
                   <div>
-                    <div className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                      Select your Battle Pass!
-                    </div>
+                    {tokens && tokens.length > 0 && (
+                      <div className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+                        Select your Battle Pass!
+                      </div>
+                    )}
                     <div className="flex flex-wrap">
                       {tokens &&
                         tokens?.map((nft) => {
@@ -190,7 +191,7 @@ const Play = ({ walletAddress }: Play) => {
                             </div>
                           );
                         })}
-                      {!tokens && (
+                      {(!tokens || tokens.length === 0) && (
                         <div className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
                           You don't have any Battle Pass. Go to Mint page and
                           mint some!
@@ -218,9 +219,10 @@ const Play = ({ walletAddress }: Play) => {
                         {isStarted ? 'Reset Battle' : '⚔️ Start Battle ⚔️'}
                       </button>
                       <div className="text-sm text-left battle-log grid grid-cols-1 divide-y">
-                        {logs.map((l) => {
+                        {logs.map((l, i) => {
                           return (
                             <div
+                              key={`log_${i}`}
                               className="p-2"
                               dangerouslySetInnerHTML={{ __html: l }}
                             />

@@ -1,5 +1,5 @@
 // Importing libraries
-import { ThirdwebSDK } from '@3rdweb/sdk';
+import { NFTMetadata, ThirdwebSDK } from '@3rdweb/sdk';
 import { ethers } from 'ethers';
 
 //Importing private key
@@ -16,7 +16,6 @@ const sdk = new ThirdwebSDK(
   )
 );
 // assign the smart contract address
-// const nft_smart_contract_address = '0xCD1Cc0A65DC6fAe8D4ed90eBEaCea76c48D1fE00';
 const nft_smart_contract_address = '0x4Af28AFaD93A1BCBF8A6874d17471A0dCABA0FB3';
 
 // Instantiate NFT Collection module
@@ -80,6 +79,15 @@ export const getCurrentWalletConnected = async () => {
 
 export const mintNFT = async (metadata: object) => {
   const result = await nft.mint(metadata);
+  console.log(result);
+  return result;
+};
+
+export const transferNFT = async (
+  walletAddress: string,
+  token: NFTMetadata
+) => {
+  const result = await nft.transfer(walletAddress, token.id);
   console.log(result);
   return result;
 };
