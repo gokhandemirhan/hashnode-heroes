@@ -36,6 +36,19 @@ const Header = ({ walletAddress, connectWalletPressed }) => (
         >
           Play
         </NavLink>
+        <NavLink
+          style={({ isActive }) => {
+            if (isActive) {
+              return {
+                border: '1px solid black',
+              };
+            }
+          }}
+          to="/history"
+          className="text-lg py-1 px-3 rounded mr-5 mr-5 hover:text-gray-900"
+        >
+          TX History
+        </NavLink>
       </nav>
       <button
         className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"

@@ -21,6 +21,8 @@ const nft_smart_contract_address = '0x4Af28AFaD93A1BCBF8A6874d17471A0dCABA0FB3';
 // Instantiate NFT Collection module
 const nft = sdk.getNFTModule(nft_smart_contract_address);
 
+const etherscanProvider = new ethers.providers.EtherscanProvider('rinkeby');
+
 export const connectWallet: any = async () => {
   if (window.ethereum) {
     try {
@@ -96,6 +98,15 @@ export const getOwner = async (walletAddress: string) => {
   if (walletAddress !== '') {
     const result = await nft.getOwned(walletAddress);
     console.log(result);
+    return result;
+  } else {
+    return [];
+  }
+};
+
+export const getHistory = async (walletAddress: string) => {
+  if (walletAddress !== '') {
+    const result = await etherscanProvider.getHistory(walletAddress);
     return result;
   } else {
     return [];

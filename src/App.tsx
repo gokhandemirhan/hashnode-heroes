@@ -8,7 +8,9 @@ import Footer from './layouts/Footer';
 import Alert from './layouts/Alert';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Play from './Play';
+import History from './History';
 
 import {
   connectWallet,
@@ -17,6 +19,7 @@ import {
   random,
   transferNFT,
 } from './utils/interactions';
+import Modal from './layouts/Modal';
 
 interface Reaction {
   count: number;
@@ -34,6 +37,7 @@ function App() {
   const [status, setStatus] = useState('');
   const [name, setName] = useState('');
   const [isMinting, setIsMinting] = useState(false);
+  const [lastMinted, setLastMinted] = useState<object | null>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -71,6 +75,7 @@ function App() {
     const { transactionHash } = await transferNFT(walletAddress, token);
     setIsMinting(false);
     setStatus(`Minted ${token.name}`);
+    setLastMinted(token);
   };
 
   const generateStats = (data: any) => {
@@ -107,6 +112,11 @@ function App() {
     return { health, armor, attack, crit };
   };
 
+  const startClicked = () => {
+    // e.preventDefault();
+    setLastMinted(null);
+  };
+
   function addWalletListener() {
     if (window.ethereum) {
       window.ethereum.on('accountsChanged', (accounts: any) => {
@@ -131,6 +141,13 @@ function App() {
           connectWalletPressed={connectWalletPressed}
         />
         {status && <Alert message={status} />}
+        {lastMinted && (
+          <Modal
+            message={`Your NFT is minted! Go to /play to start the game.`}
+            token={lastMinted}
+            startClicked={startClicked}
+          />
+        )}
 
         <Routes>
           <Route
@@ -147,6 +164,10 @@ function App() {
           <Route
             path="/play"
             element={<Play walletAddress={walletAddress} />}
+          />
+          <Route
+            path="/history"
+            element={<History walletAddress={walletAddress} />}
           />
         </Routes>
 

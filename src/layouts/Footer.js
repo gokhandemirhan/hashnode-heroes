@@ -1,7 +1,7 @@
 import logo from '../images/logo.png';
 
 const Footer = () => (
-  <footer className="text-gray-600 body-font absolute w-full bottom-0">
+  <footer className="text-gray-600 body-font  w-full bottom-0">
     <div className="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
       <a className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
         <img src={logo} width={150} />

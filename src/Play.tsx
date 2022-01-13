@@ -100,7 +100,7 @@ const Play = ({ walletAddress }: Play) => {
     }
   };
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 body-font mb-28">
       <div className="container mx-auto px-5">
         <div className="flex flex-row justify-between">
           {chosen && (
