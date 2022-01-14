@@ -15,7 +15,7 @@ This is my take on [thirdweb x Hashnode Hackathon](https://townhall.hashnode.com
 
 Since it is a hackaton between two platforms I wanted to utilize both. You can mint and NFT (a battle pass) from a hashnode blog post, then use it to enter a battle with the top 6 voted blog posts of hashnode. See the video below for some action!
 
-// VIDEO HERE
+https://www.youtube.com/watch?v=LnkMqu7qK_g
 
 # Recap
 ### What did I learn?
